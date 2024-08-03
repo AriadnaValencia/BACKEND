@@ -1,0 +1,13 @@
+# Node modules
+node_modules/
+
+# Archivos de configuración de entorno
+.env
+
+# Logs
+*.log
+
+# Archivos del sistema
+.DS_Store
+.npm/
+.yarn/
