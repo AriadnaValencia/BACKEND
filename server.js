@@ -16,11 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-//base de datos de MongoDB
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB conectado'))
-  .catch(err => console.log('Error al conectar a MongoDB:', err));
-
+const connection = mongoose.connect(`//ariadnavalencia1999:<password>@cluster0.qjsg3ii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
+  
 // Passport middleware
 app.use(passport.initialize());
 
