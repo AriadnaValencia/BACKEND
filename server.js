@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const connection = mongoose.connect(`//ariadnavalencia1999:<password>@cluster0.qjsg3ii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
+const connection = mongoose.connect(`mongodb+srv://ariadnavalencia1999:<password>@cluster0.qjsg3ii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
   
 // Passport middleware
 app.use(passport.initialize());
