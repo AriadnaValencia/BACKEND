@@ -5,11 +5,12 @@ require('dotenv').config();
 const app = express();
 
 // Configuración de la base de datos
-const mongoURI = process.env.MONGO_URI || 'mongodb+srv://ariadnavalencia1999:2112Aria@cluster0.qjsg3ii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://ariadnavalencia1999:RsEJmsXOB06e3rmx@cluster0.qjsg3ii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  mongoose.connect(mongoURI)
   .then(() => console.log('MongoDB conectado'))
   .catch(err => console.log('Error al conectar a MongoDB:', err));
+
 
 app.use(express.json());
 
