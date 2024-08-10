@@ -1,5 +1,4 @@
 const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
-const mongoose = require('mongoose');
 const User = require('../models/User');
 const keys = require('./keys');
 const cookieExtractor = function(req) {

@@ -1,32 +1,24 @@
-require('dotenv').config();
-
 const express = require('express');
 const mongoose = require('mongoose');
-const passport = require('passport');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+require('dotenv').config(); 
 
-const users = require('./routes/users');
-const sessions = require('./routes/sessions');
-const keys = require('./config/keys');
 const app = express();
 
-// Middleware de Bodyparser
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cookieParser());
+// Configuración de la base de datos
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://ariadnavalencia1999:2112Aria@cluster0.qjsg3ii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 
-const connection = mongoose.connect(`mongodb+srv://ariadnavalencia1999:<password>@cluster0.qjsg3ii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
-  
-// Passport middleware
-app.use(passport.initialize());
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB conectado'))
+  .catch(err => console.log('Error al conectar a MongoDB:', err));
 
-// Passport configuración
-require('./config/passport')(passport);
+app.use(express.json());
 
-// Rutas
-app.use('/api/users', users);
-app.use('/api/sessions', sessions);
+app.get('/', (req, res) => {
+  res.send('Servidor funcionando');
+});
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
+
